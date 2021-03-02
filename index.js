@@ -17,7 +17,7 @@ const http = require('http')
 const url = require('url');
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://96.126.70.135:27017/";
+var url = "mongodb://mongo1:27017/";
 var db_name = "sms"
 
 const app = http.createServer((request, response) => {
@@ -42,7 +42,7 @@ const app = http.createServer((request, response) => {
         console.log(from)
         console.log(phonenumber)
         console.log(message)
-        
+
         response.writeHead(200, { 'Content-Type': 'application/json' })
         response.end("{status: 'ok'}")
 
