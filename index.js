@@ -17,7 +17,7 @@ const http = require('http')
 const url = require('url');
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://mongo1:27017/";
+var mongodb_url = "mongodb://mongo1:27017/";
 var db_name = "sms"
 
 const app = http.createServer((request, response) => {
@@ -28,7 +28,7 @@ const app = http.createServer((request, response) => {
     var re = new RegExp('^(\\d\\d\\d\\d\\d\\d)$');
     var otp = re.exec(message);
     try {
-        MongoClient.connect(url, function(err, db) {
+        MongoClient.connect(mongodb_url, function(err, db) {
             if (err) throw err;
             var dbo = db.db(db_name);
             var myobj = { from: from, phonenumber: phonenumber, message: message, otp: otp};
